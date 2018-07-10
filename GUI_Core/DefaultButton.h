@@ -12,6 +12,8 @@ public:
 	DefaultButton(int posX, int posY, int sizeX, int sizeY);
 
 	void setFillColor(const sf::Color& s);
+	
+	
 public: //Drawable
 	void draw(sf::RenderTarget& draw, sf::RenderStates states) const override;
 public: //IButton

@@ -3,11 +3,22 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-class Image : public sf::Sprite {
-public:
-	Image(std::unique_ptr<sf::Texture>&& t);
+#include "GuiElem.h"
 
-	sf::Vector2u getSize() const;
+class Image : public GuiElem {
+public:
+	Image(GuiElem* parent, const std::string& filePath);
+	Image(GuiElem* parent, const std::string& filePath, float width, float height);
+	void setScale(float x, float y);
+public: //GuiElem
+	sf::Vector2f getSize() const override;
+	sf::Vector2f getPosition() const override;
+
+	void setSize(float width, float height) override;
+	void setPosition(float x, float y) override;
+
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:
-	std::unique_ptr<sf::Texture> m_texture;
+	sf::Texture* m_texture;
+	sf::Sprite m_sprite;
 };

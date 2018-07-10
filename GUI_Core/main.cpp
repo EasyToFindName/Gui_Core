@@ -1,58 +1,45 @@
 #include "Gui.h"
+#include "Image.h"
+#include "TextLabel.h"
+#include "VerticalLayout.h"
+#include "HorizontalLayout.h"
+#include "CenterLayout.h"
+#include "Container.h"
+
 
 #include <SFML/System.hpp>
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-
-	Gui mainWindowGui(window);
-
-	mainWindowGui.loadFont("Arial", "./res/fonts/arial.ttf");
-	mainWindowGui.loadCursor("GothicCursor", "./res/cursors/Cursor_Goth_Cursor.png");
 	
-	mainWindowGui.setCursor("GothicCursor");
-	mainWindowGui.setBackgroundColor(sf::Color::Green);
-	mainWindowGui.setBackgroundImage("./res/textures/bg.png");
+	Gui gui(window);
+	gui.setBackgroundImage("./res/textures/bg.png");
+	gui.setCursor("./res/cursors/Cursor_Goth_Cursor.png");
 
-	Textbox* text = mainWindowGui.addTextbox("Arial", "Hello world!");
-	if (text) {
-		text->setFillColor(sf::Color(255, 0, 0));
-		text->setPosition(50.0f, 50.0f);
-		text->setCharacterSize(20);
-	}
 
-	Textbox* otherText = mainWindowGui.addTextbox("Arial", "Good bye");
-	if (otherText) {
-		text->setFillColor(sf::Color::Red);
-	}
+	auto main = gui.addElem<CenterLayout>(gui.getSize().x, gui.getSize().y);
+	main->setPadding(25.0f);
 
-	Image* img = mainWindowGui.addImage("./res/textures/logo.png", 0.5f, 0.5f);
-	if (img) {
-		img->setPosition(window.getSize().x / 2 - img->getSize().x / 2, 50.0f);
-	}
+	auto label3 = main->addElem<Image>("./res/textures/bg.png", 300, 300);
 
-	auto button = std::make_unique<DefaultButton>(250, 250, 300, 50);
-	
-	button->setFillColor(sf::Color(128, 128, 128, 192));
-	mainWindowGui.addButton(std::move(button));
+	auto label2 = main->addElem<Image>("./res/textures/bg.png", 200, 200);
 
-	auto button2 = std::make_unique<DefaultButton>(250, 350, 300, 50);
+	auto label1 = main->addElem<Image>("./res/textures/bg.png", 100, 100);
 
-	button2->setFillColor(sf::Color(128, 128, 128, 192));
-	mainWindowGui.addButton(std::move(button2));
+	auto label4 = main->addElem<TextLabel>("./res/fonts/arial.ttf", "Test3", 30);
+	label4->setColor(sf::Color::Black);
 
+	main->align();
 
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed)
 				window.close();
-
-			mainWindowGui.captureEvent(event);
 		}
 
+		gui.draw();
 
-		mainWindowGui.run(sf::Time::Zero);
 		window.display();
 	}
 

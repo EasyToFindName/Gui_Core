@@ -126,18 +126,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CenterLayout.cpp" />
+    <ClCompile Include="Container.cpp" />
     <ClCompile Include="DefaultButton.cpp" />
     <ClCompile Include="Gui.cpp" />
+    <ClCompile Include="HorizontalLayout.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Layout.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Textbox.cpp" />
+    <ClCompile Include="ResourceCacher.cpp" />
+    <ClCompile Include="TextLabel.cpp" />
+    <ClCompile Include="VerticalLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CenterLayout.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="DefaultButton.h" />
+    <ClInclude Include="GuiElem.h" />
+    <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="IButton.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Image.h" />
-    <ClInclude Include="Textbox.h" />
+    <ClInclude Include="Layout.h" />
+    <ClInclude Include="ResourceCacher.h" />
+    <ClInclude Include="TextLabel.h" />
+    <ClInclude Include="VerticalLayout.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
