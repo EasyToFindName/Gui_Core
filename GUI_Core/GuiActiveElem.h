@@ -1,9 +1,13 @@
 #pragma once
 
+#include "GuiElem.h"
 #include <SFML/Graphics.hpp>
 
-struct IButton : public sf::Drawable {
-	virtual bool isPointInside(int x, int y) = 0;
+class GuiActiveElem : public GuiElem {
+public:
+	GuiActiveElem(GuiElem* parent):GuiElem(parent) {}
+
+	virtual bool isPointInside(float x, float y) = 0;
 
 	virtual void onMouseMoved(int x, int y) {}
 

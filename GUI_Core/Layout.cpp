@@ -1,10 +1,10 @@
 #include "Layout.h"
 
-Layout::Layout(GuiElem* parent):Container(parent) {
+Layout::Layout(GuiElem* parent):Container(parent), m_changed(true) {
 	
 }
 
-Layout::Layout(GuiElem* parent, float width, float height) : Container(parent, width, height) {
+Layout::Layout(GuiElem* parent, float width, float height) : Container(parent, width, height), m_changed(true) {
 	
 }
 
@@ -48,7 +48,29 @@ void Layout::resizeElem(GuiElem* el, const sf::Vector2f& effectiveSize) {
 	el->setSize(elemSize.x, elemSize.y);
 }
 
+void Layout::setPosition(float x, float y) {
+	Container::setPosition(x, y);
+	m_changed = true;
+}
+
+void Layout::setSize(float x, float y) {
+	Container::setSize(x, y);
+	m_changed = true;
+}
+
+void Layout::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+	auto* mut_this = const_cast<Layout*>(this);
+	
+	if (mut_this->m_changed) {
+		mut_this->align();
+		mut_this->m_changed = false;
+	}
+
+	Container::draw(target, states);
+}
+
 void Layout::onElemAdded(GuiElem * el) {
 	Container::onElemAdded(el);
 	m_layoutElements.push_back(el);
+	m_changed = true;
 }

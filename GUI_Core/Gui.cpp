@@ -49,7 +49,7 @@ void Gui::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	
 	if (m_cursor != nullptr) {
 		auto pos = sf::Mouse::getPosition(m_window);
-		m_cursor->setPosition(pos.x, pos.y);
+		m_cursor->setPosition(float(pos.x), float(pos.y));
 		m_window.draw(*m_cursor);
 	}
 }

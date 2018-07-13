@@ -1,20 +1,16 @@
 #include "CenterLayout.h"
 
-
-
 CenterLayout::CenterLayout(GuiElem* parent) 
 	:Layout(parent) 
 {
 	
 }
 
-
 CenterLayout::CenterLayout(GuiElem* parent, float width, float height)
 	:Layout(parent, width, height) 
 {
 
 }
-
 
 void CenterLayout::align() {
 	sf::Vector2f effectiveSize = getEffectiveSize();

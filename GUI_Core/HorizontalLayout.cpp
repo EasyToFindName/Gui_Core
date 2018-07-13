@@ -25,9 +25,10 @@ void HorizontalLayout::align() {
 	sf::Vector2f effectiveSize = getEffectiveSize();
 
 	auto current = m_layoutElements.begin();
-	resizeElem(*current, effectiveSize);
+	//resizeElem(*current, effectiveSize);
 
 	auto size = (*current)->getSize();
+
 	(*current)->setPosition(effectivePos.x,
 							effectivePos.y + (effectiveSize.y / 2.0f - size.y / 2.0f));
 

@@ -14,8 +14,12 @@ public:
 	void setPadding(float top, float right, float bottom, float left);
 
 public:
+	virtual void setPosition(float x, float y) override;
+	virtual void setSize(float width, float height) override;
+
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void onElemAdded(GuiElem* el) override;
-public: 
+protected: 
 	virtual void align() = 0;
 protected:
 	sf::Vector2f getEffectivePos() const;
@@ -33,5 +37,6 @@ private:
 		float left;
 	} m_padding;
 
+	bool m_changed;
 };
 

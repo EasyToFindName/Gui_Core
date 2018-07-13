@@ -56,9 +56,6 @@
     <ClInclude Include="Image.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="IButton.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="DefaultButton.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -84,6 +81,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="CenterLayout.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiActiveElem.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

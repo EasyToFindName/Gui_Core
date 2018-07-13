@@ -144,7 +144,7 @@
     <ClInclude Include="DefaultButton.h" />
     <ClInclude Include="GuiElem.h" />
     <ClInclude Include="HorizontalLayout.h" />
-    <ClInclude Include="IButton.h" />
+    <ClInclude Include="GuiActiveElem.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Layout.h" />

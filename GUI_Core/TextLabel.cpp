@@ -23,7 +23,7 @@ void TextLabel::setCharacterSize(unsigned int charSize) {
 }
 
 void TextLabel::setPosition(float x, float y) {
-	m_text.setPosition(x, y);
+	m_text.setPosition(x, y - getSize().y / 2.0f);
 }
 
 void TextLabel::setSize(float width, float height) {
@@ -47,7 +47,8 @@ sf::Vector2f TextLabel::getSize() const {
 }
 
 sf::Vector2f TextLabel::getPosition() const {
-	return m_text.getPosition();
+	auto pos = m_text.getPosition();
+	return sf::Vector2f(pos.x, pos.y + getSize().y / 2.0f);
 }
 
 void TextLabel::draw(sf::RenderTarget& target, sf::RenderStates states) const {

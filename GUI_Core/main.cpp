@@ -4,10 +4,14 @@
 #include "VerticalLayout.h"
 #include "HorizontalLayout.h"
 #include "CenterLayout.h"
+#include "DefaultButton.h"
 #include "Container.h"
 
 
 #include <SFML/System.hpp>
+#include <iostream>
+
+#define FONT_ARIAL "./res/fonts/arial.ttf"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
@@ -16,26 +20,19 @@ int main() {
 	gui.setBackgroundImage("./res/textures/bg.png");
 	gui.setCursor("./res/cursors/Cursor_Goth_Cursor.png");
 
-
 	auto main = gui.addElem<CenterLayout>(gui.getSize().x, gui.getSize().y);
 	main->setPadding(25.0f);
 
-	auto label3 = main->addElem<Image>("./res/textures/bg.png", 300, 300);
-
-	auto label2 = main->addElem<Image>("./res/textures/bg.png", 200, 200);
-
-	auto label1 = main->addElem<Image>("./res/textures/bg.png", 100, 100);
-
-	auto label4 = main->addElem<TextLabel>("./res/fonts/arial.ttf", "Test3", 30);
-	label4->setColor(sf::Color::Black);
-
-	main->align();
+	auto button = main->addElem<DefaultButton>(200.0f, 100.0f);
+	button->setText(FONT_ARIAL, "Hello?");
 
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed)
 				window.close();
+
+			gui.captureEvent(event);
 		}
 
 		gui.draw();

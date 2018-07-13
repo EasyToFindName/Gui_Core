@@ -1,5 +1,8 @@
 #include "Container.h"
 
+
+GuiActiveElem* Container::selectedActiveElem = nullptr;
+
 Container::Container(GuiElem* parent) : GuiElem(parent) {
 	m_region.setFillColor(sf::Color::Transparent);
 }
@@ -44,6 +47,55 @@ void Container::setPosition(float x, float y) {
 	m_region.setPosition(sf::Vector2f(x, y));
 }
 
+bool Container::captureEvent(sf::Event e) {
+	bool eventTriggered = false;
+
+	if (e.type == sf::Event::MouseMoved) {
+		GuiActiveElem* temp = nullptr;
+
+		for (auto& el : m_controls) {
+			if (el->isPointInside(e.mouseMove.x, e.mouseMove.y)) {
+				temp = el.get();
+				temp->onMouseMoved(e.mouseMove.x, e.mouseMove.y);
+				eventTriggered = true;
+				break;
+			}
+		}
+
+		if (temp != selectedActiveElem) {
+			if (selectedActiveElem != nullptr) 
+				selectedActiveElem->onMouseOut();
+
+			selectedActiveElem = temp;
+			
+			if (selectedActiveElem != nullptr) 
+ 				selectedActiveElem->onMouseOver();
+			eventTriggered = true;
+		}
+	}
+
+	else if (e.type == sf::Event::MouseButtonPressed) {
+		if (selectedActiveElem != nullptr) {
+			selectedActiveElem->onPressed(e.mouseButton.button, e.mouseButton.x, e.mouseButton.y);
+			eventTriggered = true;
+		}
+	}
+
+	else if (e.type == sf::Event::MouseButtonReleased) {
+		if (selectedActiveElem != nullptr) {
+			selectedActiveElem->onReleased(e.mouseButton.button, e.mouseButton.x, e.mouseButton.y);
+			eventTriggered = true;
+		}
+	}
+
+	for (auto& container : m_containers) {
+		if (eventTriggered) break;
+		eventTriggered = container->captureEvent(e);
+	}
+
+	return eventTriggered;	
+}
+
 void Container::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(m_region);
 
@@ -52,6 +104,10 @@ void Container::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	}
 
 	for (auto &i : m_elements) {
+		i->draw(target, states);
+	}
+
+	for (auto &i : m_controls) {
 		i->draw(target, states);
 	}
 
