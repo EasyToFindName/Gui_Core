@@ -4,13 +4,13 @@
 DefaultButton::DefaultButton(GuiElem* parent)
 	:GuiActiveElem(parent), m_region(this), m_text(nullptr)
 {
-	m_region.setFillColor(sf::Color(30, 30, 30, 192));
+	m_region.setFillColor(sf::Color(60, 60, 60, 192));
 }
 
 DefaultButton::DefaultButton(GuiElem* parent, float width, float height) 
 	:GuiActiveElem(parent), m_region(this, width, height), m_text(nullptr)
 {
-	m_region.setFillColor(sf::Color(30, 30, 30, 192));
+	m_region.setFillColor(sf::Color(60, 60, 60, 192));
 }
 
 
@@ -58,18 +58,24 @@ void DefaultButton::onMouseMoved(int x, int y) {
 
 void DefaultButton::onMouseOver() {
 	std::cout << "onMouseOver()\n";
+	m_region.setFillColor(sf::Color(30, 30, 30, 228));
 }
 
 void DefaultButton::onMouseOut() {
 	std::cout << "onMouseOut()\n";
+	m_region.setFillColor(sf::Color(60, 60, 60, 192));
 }
 
 void DefaultButton::onPressed(sf::Mouse::Button b, int x, int y) {
 	std::cout << "onPressed()\n";
+	m_region.setFillColor(sf::Color(192, 192, 192, 255));
+	if (m_text != nullptr) m_text->setColor(sf::Color::Black);
 }
 
 void DefaultButton::onReleased(sf::Mouse::Button b, int x, int y) {
 	std::cout << "onReleased()\n";
+	m_region.setFillColor(sf::Color(30, 30, 30, 228));
+	if (m_text != nullptr) m_text->setColor(sf::Color::White);
 }
 
 void DefaultButton::draw(sf::RenderTarget& target, sf::RenderStates states) const {

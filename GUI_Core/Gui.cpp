@@ -54,6 +54,20 @@ void Gui::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	}
 }
 
+void Gui::run(sf::Time dt) {
+	sf::Event e;
+	while (m_window.pollEvent(e)) {
+		if (e.type == sf::Event::Closed)
+			m_window.close();
+
+		captureEvent(e);
+	}
+
+	this->draw();
+
+	m_window.display();
+}
+
 //Gui::Gui(sf::RenderWindow& win)
 //	:m_window(win),
 //	 m_customCursor(nullptr),

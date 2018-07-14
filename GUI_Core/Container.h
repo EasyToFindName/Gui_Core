@@ -34,7 +34,9 @@ protected: //container events
 	//called after elem was added
 	virtual void onElemAdded(GuiElem* el);
 public: //gui events processing
-	bool captureEvent(sf::Event e);
+	void captureEvent(sf::Event e);
+protected:
+	GuiActiveElem* selectActiveElem(float x, float y);
 	static GuiActiveElem* selectedActiveElem;
 private:
 	sf::RectangleShape m_region;
