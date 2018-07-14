@@ -74,3 +74,10 @@ void Layout::onElemAdded(GuiElem * el) {
 	m_layoutElements.push_back(el);
 	m_changed = true;
 }
+
+void Layout::onElemRemoved(GuiElem* el) {
+	m_layoutElements.erase(std::find(m_layoutElements.begin(), m_layoutElements.end(), el));
+	m_changed = true;
+
+	Container::onElemRemoved(el);
+}

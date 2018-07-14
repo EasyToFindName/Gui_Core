@@ -30,7 +30,19 @@ int main() {
 
 	button->addListener(GuiActiveElem::PRESSED, [main]() {
 		auto* useless = main->addElem<DefaultButton>(200.0f, 70.0f);
-		useless->setText(FONT_ARIAL, "Useless Button");
+		useless->setText(FONT_ARIAL, "Click to remove");
+
+		useless->addListener(GuiActiveElem::MOUSE_OVER, [useless]() {
+			useless->setText(FONT_ARIAL, "Don't kill me pls!");
+		});
+
+		useless->addListener(GuiActiveElem::MOUSE_OUT, [useless]() {
+			useless->setText(FONT_ARIAL, "Click to remove");
+		});
+
+		useless->addListener(GuiActiveElem::PRESSED, [main, useless]() {
+			main->removeElem(useless);
+		});
 	});
 
 

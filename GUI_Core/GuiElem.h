@@ -21,6 +21,10 @@ public:
 		else return nullptr; 
 	}
 
+	GuiElem* parent() {
+		return m_parent;
+	}
+
 private:
 	GuiElem* m_parent;
 

@@ -30,14 +30,19 @@ public: //factory
 	template<typename GuiElemType, typename... ConstructorArgs>
 	GuiElemType* addElem(ConstructorArgs... args);
 
+	bool removeElem(GuiElem* elem);
 protected: //container events
 	//called after elem was added
 	virtual void onElemAdded(GuiElem* el);
-public: //gui events processing
-	void captureEvent(sf::Event e);
+
+	//called before element removed
+	virtual void onElemRemoved(GuiElem* el);
 protected:
 	GuiActiveElem* selectActiveElem(float x, float y);
-	static GuiActiveElem* selectedActiveElem;
+
+	//removeElem helper
+	template<typename BaseType>
+	bool remove(std::vector<std::unique_ptr<BaseType>>& collection, GuiElem* el);
 private:
 	sf::RectangleShape m_region;
 	std::unique_ptr<Image> m_background;
@@ -72,4 +77,18 @@ GuiElemType* Container::addElem(ConstructorArgs... args) {
 	catch(...) {
 		return nullptr;
 	}
+}
+
+
+template<typename BaseType>
+bool Container::remove(std::vector<std::unique_ptr<BaseType>>& collection, GuiElem* el) {
+	for (auto it = collection.begin(); it != collection.end(); ++it) {
+		if (it->get() == el) {
+			onElemRemoved(el);
+			collection.erase(it);
+			return true;
+		}
+	}
+
+	return false;
 }

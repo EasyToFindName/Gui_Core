@@ -19,6 +19,7 @@ public:
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void onElemAdded(GuiElem* el) override;
+	virtual void onElemRemoved(GuiElem* el) override;
 protected: 
 	virtual void align() = 0;
 protected:

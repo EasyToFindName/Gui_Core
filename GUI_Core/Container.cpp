@@ -1,7 +1,7 @@
 #include "Container.h"
 #include <iostream>
 
-GuiActiveElem* Container::selectedActiveElem = nullptr;
+#include <algorithm>
 
 Container::Container(GuiElem* parent) : GuiElem(parent) {
 	m_region.setFillColor(sf::Color::Transparent);
@@ -34,9 +34,32 @@ sf::Vector2f Container::getPosition() const {
 	return m_region.getPosition();
 }
 
+
+bool Container::removeElem(GuiElem* elem) {
+	if (remove(m_elements, elem)
+	||  remove(m_controls, elem)
+	||  remove(m_containers, elem)) {
+		return true;
+	}
+
+	for (auto& container : m_containers) {
+		if (container->removeElem(elem)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void Container::onElemAdded(GuiElem* el) {
 	auto pos = this->getPosition();
 	el->setPosition(pos.x, pos.y);
+}
+
+void Container::onElemRemoved(GuiElem* el) {
+	if (parent() != nullptr) {
+		reinterpret_cast<Container*>(parent())->onElemRemoved(el);
+	}
 }
 
 void Container::setSize(float width, float height) {
@@ -61,45 +84,6 @@ GuiActiveElem* Container::selectActiveElem(float x, float y) {
 	}
 
 	return nullptr;
-}
-
-void Container::captureEvent(sf::Event e) {
-	if (e.type == sf::Event::MouseMoved) {
-		GuiActiveElem* temp = selectActiveElem(e.mouseMove.x, e.mouseMove.y);
-
-		if (temp != selectedActiveElem) {
-			if (selectedActiveElem != nullptr) {
-				selectedActiveElem->onMouseOut();
-				selectedActiveElem->triggerEvent(GuiActiveElem::MOUSE_OUT);
-			}
-
-			selectedActiveElem = temp;
-			
-			if (selectedActiveElem != nullptr) {
-				selectedActiveElem->onMouseOver();
-				selectedActiveElem->triggerEvent(GuiActiveElem::MOUSE_OVER);
-			}
-		}
-		else if (temp != nullptr) {
-			temp->onMouseMoved(e.mouseMove.x, e.mouseMove.y);
-			temp->triggerEvent(GuiActiveElem::MOUSE_MOVED);
-		}
-	}
-
-	else if (e.type == sf::Event::MouseButtonPressed) {
-		if (selectedActiveElem != nullptr) {
-			selectedActiveElem->onPressed(e.mouseButton.button, e.mouseButton.x, e.mouseButton.y);
-			selectedActiveElem->triggerEvent(GuiActiveElem::PRESSED);
-		}
-
-	}
-
-	else if (e.type == sf::Event::MouseButtonReleased) {
-		if (selectedActiveElem != nullptr) {
-			selectedActiveElem->onReleased(e.mouseButton.button, e.mouseButton.x, e.mouseButton.y);
-			selectedActiveElem->triggerEvent(GuiActiveElem::RELEASED);
-		}
-	}
 }
 
 void Container::draw(sf::RenderTarget& target, sf::RenderStates states) const {
