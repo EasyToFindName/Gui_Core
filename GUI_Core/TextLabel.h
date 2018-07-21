@@ -5,7 +5,7 @@
 
 class TextLabel : public GuiElem {
 public:
-	TextLabel(GuiElem* parent, const std::string& fontPath, const std::string& text = "", unsigned int charSize = 30);
+	TextLabel(Container* parent, const std::string& fontPath, const std::string& text = "", unsigned int charSize = 30);
 
 	void setText(const std::string& text);
 	void setCharacterSize(unsigned int charSize);

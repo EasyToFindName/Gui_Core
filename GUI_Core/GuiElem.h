@@ -3,9 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include "ResourceCacher.h"
 
+class Container;
 class GuiElem : public sf::Drawable {
 public:
-	explicit GuiElem(GuiElem* parent) : m_parent(parent) {}
+	explicit GuiElem(Container* parent);
 	virtual ~GuiElem() = default;
 
 	virtual sf::Vector2f getSize() const = 0;
@@ -16,16 +17,10 @@ public:
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override = 0;
 
-	virtual ResourceCacher* resources() { 
-		if (m_parent != nullptr) return m_parent->resources(); 
-		else return nullptr; 
-	}
+	virtual ResourceCacher* resources();
 
-	GuiElem* parent() {
-		return m_parent;
-	}
+	Container* parent();
 
 private:
-	GuiElem* m_parent;
-
+	Container* m_parent;
 };

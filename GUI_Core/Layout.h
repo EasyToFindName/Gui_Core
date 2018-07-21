@@ -5,8 +5,8 @@
 #include <vector>
 class Layout : public Container {
 public:
-	explicit Layout(GuiElem* parent);
-	Layout(GuiElem* parent, float width, float height);
+	explicit Layout(Container* parent);
+	Layout(Container* parent, float width, float height);
 
 	void setPadding(float all);
 	void setPadding(float top_bottom, float right_left);

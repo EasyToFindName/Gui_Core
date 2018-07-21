@@ -4,12 +4,12 @@
 
 
 
-HorizontalLayout::HorizontalLayout(GuiElem* parent)
+HorizontalLayout::HorizontalLayout(Container* parent)
 	:Layout(parent), m_offset(0.0f) {
 
 }
 
-HorizontalLayout::HorizontalLayout(GuiElem* parent, float width, float height)
+HorizontalLayout::HorizontalLayout(Container* parent, float width, float height)
 	: Layout(parent, width, height), m_offset(0.0f) {
 
 }

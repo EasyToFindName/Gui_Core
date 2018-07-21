@@ -4,8 +4,8 @@
 #include <vector>
 class VerticalLayout : public Layout {
 public:
-	explicit VerticalLayout(GuiElem* parent);
-	VerticalLayout(GuiElem* parent, float width, float height);
+	explicit VerticalLayout(Container* parent);
+	VerticalLayout(Container* parent, float width, float height);
 	
 	void setOffset(float offset);
 public:

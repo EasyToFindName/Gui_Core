@@ -1,6 +1,6 @@
 #include "TextLabel.h"
 
-TextLabel::TextLabel(GuiElem* parent, const std::string& fontPath, const std::string& text, unsigned int charSize) : GuiElem(parent) {
+TextLabel::TextLabel(Container* parent, const std::string& fontPath, const std::string& text, unsigned int charSize) : GuiElem(parent) {
 	m_font = resources()->getFont(fontPath);
 
 	if (m_font == nullptr) {

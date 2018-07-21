@@ -131,6 +131,7 @@
     <ClCompile Include="DefaultButton.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="GuiActiveElem.cpp" />
+    <ClCompile Include="GuiElem.cpp" />
     <ClCompile Include="HorizontalLayout.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Layout.cpp" />

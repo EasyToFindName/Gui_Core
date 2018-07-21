@@ -5,7 +5,7 @@
 
 #include "ResourceCacher.h"
 
-Image::Image(GuiElem* parent, const std::string& filePath): GuiElem(parent) {
+Image::Image(Container* parent, const std::string& filePath): GuiElem(parent) {
 	m_texture = resources()->getTexture(filePath);
 
 	if (m_texture == nullptr) {
@@ -15,7 +15,7 @@ Image::Image(GuiElem* parent, const std::string& filePath): GuiElem(parent) {
 	m_sprite.setTexture(*m_texture);
 }
 
-Image::Image(GuiElem* parent, const std::string& filePath, float width, float height) : Image(parent, filePath) {
+Image::Image(Container* parent, const std::string& filePath, float width, float height) : Image(parent, filePath) {
 	setSize(width, height);
 }
 

@@ -7,8 +7,8 @@
 
 class Image : public GuiElem {
 public:
-	Image(GuiElem* parent, const std::string& filePath);
-	Image(GuiElem* parent, const std::string& filePath, float width, float height);
+	Image(Container* parent, const std::string& filePath);
+	Image(Container* parent, const std::string& filePath, float width, float height);
 	void setScale(float x, float y);
 public: //GuiElem
 	sf::Vector2f getSize() const override;

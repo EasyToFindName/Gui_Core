@@ -1,10 +1,10 @@
 #include "Layout.h"
 
-Layout::Layout(GuiElem* parent):Container(parent), m_changed(true) {
+Layout::Layout(Container* parent):Container(parent), m_changed(true) {
 	
 }
 
-Layout::Layout(GuiElem* parent, float width, float height) : Container(parent, width, height), m_changed(true) {
+Layout::Layout(Container* parent, float width, float height) : Container(parent, width, height), m_changed(true) {
 	
 }
 

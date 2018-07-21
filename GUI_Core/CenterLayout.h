@@ -4,8 +4,8 @@
 
 class CenterLayout : public Layout {
 public:
-	explicit CenterLayout(GuiElem* parent);
-	CenterLayout(GuiElem* parent, float widht, float height);
+	explicit CenterLayout(Container* parent);
+	CenterLayout(Container* parent, float widht, float height);
 public: 
 	virtual void align() override;
 

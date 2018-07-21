@@ -3,11 +3,11 @@
 
 #include <algorithm>
 
-Container::Container(GuiElem* parent) : GuiElem(parent) {
+Container::Container(Container* parent) : GuiElem(parent) {
 	m_region.setFillColor(sf::Color::Transparent);
 }
 
-Container::Container(GuiElem* parent, float width, float height) : Container(parent) {
+Container::Container(Container* parent, float width, float height) : Container(parent) {
 	this->setSize(width, height);
 }
 
@@ -58,7 +58,7 @@ void Container::onElemAdded(GuiElem* el) {
 
 void Container::onElemRemoved(GuiElem* el) {
 	if (parent() != nullptr) {
-		reinterpret_cast<Container*>(parent())->onElemRemoved(el);
+		parent()->onElemRemoved(el);
 	}
 }
 
@@ -78,7 +78,7 @@ GuiActiveElem* Container::selectActiveElem(float x, float y) {
 	}
 
 	GuiActiveElem* childActiveElem = nullptr;
-	for (auto& container : m_containers) {
+	for (auto& container: m_containers) {
 		childActiveElem = container->selectActiveElem(x, y);
 		if (childActiveElem != nullptr) return childActiveElem;
 	}

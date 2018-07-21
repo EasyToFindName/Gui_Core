@@ -4,8 +4,8 @@
 
 class HorizontalLayout : public Layout  {
 public:
-	explicit HorizontalLayout(GuiElem* parent);
-	HorizontalLayout(GuiElem* parent, float width, float height);
+	explicit HorizontalLayout(Container* parent);
+	HorizontalLayout(Container* parent, float width, float height);
 
 	void setOffset(float offset);
 public:

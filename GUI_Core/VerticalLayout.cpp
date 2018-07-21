@@ -2,13 +2,13 @@
 
 
 
-VerticalLayout::VerticalLayout(GuiElem* parent)
+VerticalLayout::VerticalLayout(Container* parent)
 	:Layout(parent), m_offset(0.0f) 
 {
 
 }
 
-VerticalLayout::VerticalLayout(GuiElem* parent, float width, float height) 
+VerticalLayout::VerticalLayout(Container* parent, float width, float height) 
 	:Layout(parent, width, height), m_offset(0.0f) 
 {
 

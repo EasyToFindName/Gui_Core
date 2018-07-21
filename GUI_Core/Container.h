@@ -10,8 +10,8 @@
 
 class Container : public GuiElem {
 public:
-	explicit Container(GuiElem* parent);
-	Container(GuiElem* parent, float width, float height);
+	explicit Container(Container* parent);
+	Container(Container* parent, float width, float height);
 	void setFillColor(const sf::Color& c);
 	bool setBackgroundImage(const std::string& filePath);
 public: //GuiElem
@@ -25,7 +25,7 @@ public: //GuiElem
 public: //factory
 	//adds new gui elem to Container.
 	//Constructor args mustn't contain parent ptr, because the method passes ptr to the current container as a first argument of the constructor.
-	//Example: Creation of a class A with a constructor A(GuiElem* parent, int a, int b);
+	//Example: Creation of a class A with a constructor A(Container* parent, int a, int b);
 	//auto a = addElem<A>(1,2);
 	template<typename GuiElemType, typename... ConstructorArgs>
 	GuiElemType* addElem(ConstructorArgs... args);

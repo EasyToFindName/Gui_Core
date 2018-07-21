@@ -1,7 +1,5 @@
 #include "Gui.h"
 //#include <algorithm>
-//
-//#include <iostream>
 
 
 
@@ -72,7 +70,6 @@ void Gui::run(sf::Time dt) {
 	}
 
 	this->draw();
-
 	m_window.display();
 }
 

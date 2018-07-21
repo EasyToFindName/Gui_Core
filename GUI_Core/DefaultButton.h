@@ -10,8 +10,8 @@
 
 class DefaultButton : public GuiActiveElem {
 public:
-	explicit DefaultButton(GuiElem* parent);
-	DefaultButton(GuiElem* parent, float width, float height);
+	explicit DefaultButton(Container* parent);
+	DefaultButton(Container* parent, float width, float height);
 
 	void setFillColor(const sf::Color& s);
 	void setText(const std::string& fontPath, const std::string& text, 

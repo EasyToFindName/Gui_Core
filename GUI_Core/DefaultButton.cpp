@@ -1,14 +1,14 @@
 #include "DefaultButton.h"
 #include <iostream>
 
-DefaultButton::DefaultButton(GuiElem* parent)
-	:GuiActiveElem(parent), m_region(this), m_text(nullptr)
+DefaultButton::DefaultButton(Container* parent)
+	:GuiActiveElem(parent), m_region(parent), m_text(nullptr)
 {
 	m_region.setFillColor(sf::Color(60, 60, 60, 192));
 }
 
-DefaultButton::DefaultButton(GuiElem* parent, float width, float height) 
-	:GuiActiveElem(parent), m_region(this, width, height), m_text(nullptr)
+DefaultButton::DefaultButton(Container* parent, float width, float height) 
+	:GuiActiveElem(parent), m_region(parent, width, height), m_text(nullptr)
 {
 	m_region.setFillColor(sf::Color(60, 60, 60, 192));
 }

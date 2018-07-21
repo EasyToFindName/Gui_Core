@@ -1,12 +1,12 @@
 #include "CenterLayout.h"
 
-CenterLayout::CenterLayout(GuiElem* parent) 
+CenterLayout::CenterLayout(Container* parent) 
 	:Layout(parent) 
 {
 	
 }
 
-CenterLayout::CenterLayout(GuiElem* parent, float width, float height)
+CenterLayout::CenterLayout(Container* parent, float width, float height)
 	:Layout(parent, width, height) 
 {
 

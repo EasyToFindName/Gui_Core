@@ -17,7 +17,7 @@ public:
 		MOUSE_MOVED
 	};
 public:
-	GuiActiveElem(GuiElem* parent):GuiElem(parent) {}
+	GuiActiveElem(Container* parent):GuiElem(parent) {}
 
 	virtual bool isPointInside(float x, float y) = 0;
 
