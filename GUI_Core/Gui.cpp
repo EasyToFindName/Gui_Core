@@ -80,26 +80,26 @@ void Gui::captureEvent(sf::Event e) {
 		if (temp != m_selectedActiveItem) {
 			if (m_selectedActiveItem != nullptr) {
 				m_selectedActiveItem->onMouseOut();
-				m_selectedActiveItem->triggerEvent(GuiActiveElem::MOUSE_OUT);
+				m_selectedActiveItem->triggerEvent(GuiActiveElem::MOUSE_OUT, e);
 			}
 
 			m_selectedActiveItem = temp;
 
 			if (m_selectedActiveItem != nullptr) {
 				m_selectedActiveItem->onMouseOver();
-				m_selectedActiveItem->triggerEvent(GuiActiveElem::MOUSE_OVER);
+				m_selectedActiveItem->triggerEvent(GuiActiveElem::MOUSE_OVER, e);
 			}
 		}
 		else if (temp != nullptr) {
 			temp->onMouseMoved(e.mouseMove.x, e.mouseMove.y);
-			temp->triggerEvent(GuiActiveElem::MOUSE_MOVED);
+			temp->triggerEvent(GuiActiveElem::MOUSE_MOVED, e);
 		}
 	}
 
 	else if (e.type == sf::Event::MouseButtonPressed) {
 		if (m_selectedActiveItem != nullptr) {
 			m_selectedActiveItem->onPressed(e.mouseButton.button, e.mouseButton.x, e.mouseButton.y);
-			m_selectedActiveItem->triggerEvent(GuiActiveElem::PRESSED);
+			m_selectedActiveItem->triggerEvent(GuiActiveElem::PRESSED, e);
 		}
 
 	}
@@ -107,7 +107,7 @@ void Gui::captureEvent(sf::Event e) {
 	else if (e.type == sf::Event::MouseButtonReleased) {
 		if (m_selectedActiveItem != nullptr) {
 			m_selectedActiveItem->onReleased(e.mouseButton.button, e.mouseButton.x, e.mouseButton.y);
-			m_selectedActiveItem->triggerEvent(GuiActiveElem::RELEASED);
+			m_selectedActiveItem->triggerEvent(GuiActiveElem::RELEASED, e);
 		}
 	}
 }

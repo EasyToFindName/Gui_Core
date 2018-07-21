@@ -29,12 +29,12 @@ public:
 	virtual void onReleased(sf::Mouse::Button b, int x, int y) {}
 
 public:
-	void addListener(Event type, std::function<void()> callback);
-	void triggerEvent(Event e);
+	void addListener(Event type, std::function<void(const sf::Event&)> callback);
+	void triggerEvent(Event e, const sf::Event& sfEvent);
 private:
 	struct Subscriber {
 		Event event;
-		std::function<void()> callback;
+		std::function<void(const sf::Event&)> callback;
 	};
 
 	std::vector<Subscriber> m_subscribers;

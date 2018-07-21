@@ -129,6 +129,7 @@
     <ClCompile Include="CenterLayout.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="DefaultButton.cpp" />
+    <ClCompile Include="DragAndDrop.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="GuiActiveElem.cpp" />
     <ClCompile Include="GuiElem.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="CenterLayout.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="DefaultButton.h" />
+    <ClInclude Include="DragAndDrop.h" />
     <ClInclude Include="GuiElem.h" />
     <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="GuiActiveElem.h" />
@@ -152,6 +154,7 @@
     <ClInclude Include="Layout.h" />
     <ClInclude Include="ResourceCacher.h" />
     <ClInclude Include="TextLabel.h" />
+    <ClInclude Include="Traits.h" />
     <ClInclude Include="VerticalLayout.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
