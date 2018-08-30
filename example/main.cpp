@@ -1,12 +1,12 @@
-#include "Gui.h"
-#include "Image.h"
-#include "TextLabel.h"
-#include "VerticalLayout.h"
-#include "HorizontalLayout.h"
-#include "CenterLayout.h"
-#include "DefaultButton.h"
-#include "Container.h"
-#include "DragAndDrop.h"
+#include <Gui.h>
+#include <Image.h>
+#include <TextLabel.h>
+#include <VerticalLayout.h>
+#include <HorizontalLayout.h>
+#include <CenterLayout.h>
+#include <DefaultButton.h>
+#include <Container.h>
+#include <DragAndDrop.h>
 
 
 #include <SFML/System.hpp>

@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.5)
+
+set(EXECUTABLE_NAME ${PROJECT_NAME}_example)
+
+add_executable(${EXECUTABLE_NAME} ./main.cpp)
+
+set_target_properties(${EXECUTABLE_NAME} PROPERTIES
+    CXX_STANDARD 14
+    RUNTIME_OUTPUT_DIRECTORY "${OUTPUT_DIRECTORY_PATH}/bin"
+)
+
+target_link_libraries(${EXECUTABLE_NAME} ${PROJECT_NAME})
+
+get_target_property(RESOURCE_PATH ${EXECUTABLE_NAME} RUNTIME_OUTPUT_DIRECTORY)
+install(DIRECTORY "./res" DESTINATION "${RESOURCE_PATH}")
