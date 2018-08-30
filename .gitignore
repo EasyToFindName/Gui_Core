@@ -259,3 +259,13 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# Visual studio code settings
+.vscode/
+
+# Build directory
+build/
+
+# Output directory
+output/
+
