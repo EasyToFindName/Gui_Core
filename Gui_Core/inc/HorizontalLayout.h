@@ -2,15 +2,16 @@
 
 #include "Layout.h"
 
-class HorizontalLayout : public Layout  {
+class HorizontalLayout : public Layout {
 public:
-	explicit HorizontalLayout(Container* parent);
-	HorizontalLayout(Container* parent, float width, float height);
+  explicit HorizontalLayout(Container* parent);
+  HorizontalLayout(Container* parent, float width, float height);
 
-	void setOffset(float offset);
+  void setOffset(float offset);
+
 public:
-	virtual void align() override;
+  virtual void align() override;
+
 private:
-	float m_offset;
+  float m_offset;
 };
-

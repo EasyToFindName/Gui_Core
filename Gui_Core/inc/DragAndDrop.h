@@ -4,6 +4,5 @@
 
 class DragAndDrop {
 public:
-	static void apply(GuiActiveElem* elem);
+  static void apply(GuiActiveElem* elem);
 };
-

@@ -11,6 +11,22 @@ set(SRC_DIR "./Gui_Core/src")
 set(OUTPUT_DIRECTORY_PATH "${CMAKE_SOURCE_DIR}/output")
 
 set(SOURCES 
+    ${INCLUDE_DIR}/CenterLayout.h
+    ${INCLUDE_DIR}/Container.h
+    ${INCLUDE_DIR}/DefaultButton.h
+    ${INCLUDE_DIR}/DragAndDrop.h
+    ${INCLUDE_DIR}/Gui.h
+    ${INCLUDE_DIR}/GuiActiveElem.h
+    ${INCLUDE_DIR}/GuiElem.h
+    ${INCLUDE_DIR}/HorizontalLayout.h
+    ${INCLUDE_DIR}/Image.h
+    ${INCLUDE_DIR}/Interfaces.h
+    ${INCLUDE_DIR}/Layout.h
+    ${INCLUDE_DIR}/ResourceCacher.h
+    ${INCLUDE_DIR}/TextLabel.h
+    ${INCLUDE_DIR}/VerticalLayout.h
+
+
     ${SRC_DIR}/CenterLayout.cpp
     ${SRC_DIR}/Container.cpp
     ${SRC_DIR}/DefaultButton.cpp
